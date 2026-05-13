@@ -1,0 +1,25 @@
+PRAGMA journal_mode=WAL;
+
+CREATE TABLE IF NOT EXISTS Users (
+    Id TEXT NOT NULL PRIMARY KEY,
+    Email TEXT NOT NULL COLLATE NOCASE,
+    PasswordHash TEXT NOT NULL,
+    DisplayName TEXT NOT NULL,
+    CreatedAtUtc TEXT NOT NULL
+);
+
+CREATE UNIQUE INDEX IF NOT EXISTS IX_Users_Email ON Users(Email);
+
+CREATE TABLE IF NOT EXISTS Tasks (
+    Id TEXT NOT NULL PRIMARY KEY,
+    UserId TEXT NOT NULL,
+    Title TEXT NOT NULL,
+    Description TEXT NOT NULL,
+    Status INTEGER NOT NULL,
+    DueDateUtc TEXT NOT NULL,
+    CreatedAtUtc TEXT NOT NULL,
+    UpdatedAtUtc TEXT NOT NULL,
+    FOREIGN KEY (UserId) REFERENCES Users(Id) ON DELETE CASCADE
+);
+
+CREATE INDEX IF NOT EXISTS IX_Tasks_UserId ON Tasks(UserId);
