@@ -6,6 +6,10 @@
     <RootNamespace>CursorAgenticWebApi.Tasks.Api</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <InternalsVisibleTo Include="CursorAgenticWebApi.Tasks.Api.Tests" />
+    <ProjectReference Include="..\Application\Application.csproj" />
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="Tasks.Api.Tests" />
   </ItemGroup>
 </Project>

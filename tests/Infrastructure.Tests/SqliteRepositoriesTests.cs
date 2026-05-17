@@ -98,7 +98,7 @@ public sealed class SqliteRepositoriesTests : IAsyncLifetime
             UserId = userId,
             Title = "T",
             Description = "D",
-            Status = TaskStatus.Pending,
+            Status = WorkTaskStatus.Pending,
             DueDateUtc = DateTime.UtcNow,
             CreatedAtUtc = DateTime.UtcNow,
             UpdatedAtUtc = DateTime.UtcNow,

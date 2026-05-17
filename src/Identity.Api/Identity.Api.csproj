@@ -7,7 +7,9 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Application\Application.csproj" />
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+  </ItemGroup>
   <ItemGroup>
-    <InternalsVisibleTo Include="CursorAgenticWebApi.Identity.Api.Tests" />
+    <InternalsVisibleTo Include="Identity.Api.Tests" />
   </ItemGroup>
 </Project>

@@ -1,6 +1,7 @@
 using CursorAgenticWebApi.Application.Abstractions;
 using CursorAgenticWebApi.Domain.Entities;
 using CursorAgenticWebApi.Domain.Enums;
+using CursorAgenticWebApi.Infrastructure.Data;
 using Microsoft.Data.Sqlite;
 
 namespace CursorAgenticWebApi.Infrastructure.Repositories;
@@ -103,7 +104,7 @@ public sealed class SqliteTaskRepository(ISqliteConnectionFactory connections) :
             UserId = Guid.Parse(reader.GetString(1)),
             Title = reader.GetString(2),
             Description = reader.GetString(3),
-            Status = (TaskStatus)reader.GetInt32(4),
+            Status = (WorkTaskStatus)reader.GetInt32(4),
             DueDateUtc = DateTime.Parse(reader.GetString(5), null, System.Globalization.DateTimeStyles.RoundtripKind),
             CreatedAtUtc = DateTime.Parse(reader.GetString(6), null, System.Globalization.DateTimeStyles.RoundtripKind),
             UpdatedAtUtc = DateTime.Parse(reader.GetString(7), null, System.Globalization.DateTimeStyles.RoundtripKind),

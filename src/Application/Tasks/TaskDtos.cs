@@ -7,11 +7,11 @@ public sealed record TaskDto(
     Guid UserId,
     string Title,
     string Description,
-    TaskStatus Status,
+    WorkTaskStatus Status,
     DateTime DueDateUtc,
     DateTime CreatedAtUtc,
     DateTime UpdatedAtUtc);
 
-public sealed record CreateTaskRequest(string Title, string Description, TaskStatus Status, DateTime? DueDateUtc);
+public sealed record CreateTaskRequest(string Title, string Description, WorkTaskStatus Status, DateTime? DueDateUtc);
 
-public sealed record UpdateTaskRequest(string Title, string Description, TaskStatus Status, DateTime? DueDateUtc);
+public sealed record UpdateTaskRequest(string Title, string Description, WorkTaskStatus Status, DateTime? DueDateUtc);

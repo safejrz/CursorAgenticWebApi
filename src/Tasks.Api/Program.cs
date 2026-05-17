@@ -30,7 +30,7 @@ using (var scope = app.Services.CreateScope())
     var bootstrapper = scope.ServiceProvider.GetRequiredService<IDatabaseBootstrapper>();
     await bootstrapper.EnsureDatabaseAsync().ConfigureAwait(false);
 
-    if (app.Environment.IsDevelopment())
+    if (ShouldSeedDemoData(app))
     {
         var seeder = scope.ServiceProvider.GetRequiredService<IDataSeeder>();
         await seeder.SeedDemoDataIfEmptyAsync().ConfigureAwait(false);
@@ -55,4 +55,8 @@ static void ConfigureSharedDatabasePath(WebApplicationBuilder builder)
     builder.Configuration["ConnectionStrings:Database"] = $"Data Source={dbPath}";
 }
 
-internal partial class Program { }
+static bool ShouldSeedDemoData(WebApplication app) =>
+    app.Environment.IsDevelopment()
+    || app.Configuration.GetValue("Demo:SeedIfEmpty", false);
+
+public partial class Program { }

@@ -102,7 +102,7 @@ public sealed class TaskApplicationService(ITaskRepository tasks)
     private static TaskDto Map(WorkTask t) =>
         new(t.Id, t.UserId, t.Title, t.Description, t.Status, t.DueDateUtc, t.CreatedAtUtc, t.UpdatedAtUtc);
 
-    private static (string Code, string Message)? ValidateTaskContent(string title, string description, TaskStatus status)
+    private static (string Code, string Message)? ValidateTaskContent(string title, string description, WorkTaskStatus status)
     {
         if (string.IsNullOrWhiteSpace(title) || title.Length > 500)
             return ("validation", "Title must be between 1 and 500 characters.");

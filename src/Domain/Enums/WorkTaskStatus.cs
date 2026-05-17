@@ -1,6 +1,6 @@
 namespace CursorAgenticWebApi.Domain.Enums;
 
-public enum TaskStatus
+public enum WorkTaskStatus
 {
     Pending = 0,
     InProgress = 1,

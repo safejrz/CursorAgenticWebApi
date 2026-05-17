@@ -1,5 +1,6 @@
 using CursorAgenticWebApi.Application.Abstractions;
 using CursorAgenticWebApi.Domain.Entities;
+using CursorAgenticWebApi.Infrastructure.Data;
 using Microsoft.Data.Sqlite;
 
 namespace CursorAgenticWebApi.Infrastructure.Repositories;

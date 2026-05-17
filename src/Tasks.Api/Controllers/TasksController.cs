@@ -118,6 +118,6 @@ public sealed class TasksController(TaskApplicationService tasks) : ControllerBa
         new() { Title = status == StatusCodes.Status404NotFound ? "Not Found" : "Bad Request", Detail = detail, Status = status };
 }
 
-public sealed record CreateTaskApiRequest(string Title, string? Description, TaskStatus Status, DateTime? DueDateUtc);
+public sealed record CreateTaskApiRequest(string Title, string? Description, WorkTaskStatus Status, DateTime? DueDateUtc);
 
-public sealed record UpdateTaskApiRequest(string Title, string? Description, TaskStatus Status, DateTime? DueDateUtc);
+public sealed record UpdateTaskApiRequest(string Title, string? Description, WorkTaskStatus Status, DateTime? DueDateUtc);

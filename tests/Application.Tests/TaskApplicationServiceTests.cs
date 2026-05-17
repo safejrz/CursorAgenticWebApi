@@ -18,7 +18,7 @@ public sealed class TaskApplicationServiceTests
     public async Task CreateAsync_returns_validation_for_empty_title()
     {
         var sut = CreateSut();
-        var result = await sut.CreateAsync(Guid.NewGuid(), new CreateTaskRequest("  ", "d", TaskStatus.Pending, null)).ConfigureAwait(false);
+        var result = await sut.CreateAsync(Guid.NewGuid(), new CreateTaskRequest("  ", "d", WorkTaskStatus.Pending, null)).ConfigureAwait(false);
 
         var failure = Assert.IsType<ServiceResult<TaskDto>.Failure>(result);
         Assert.Equal("validation", failure.Code);
@@ -34,11 +34,11 @@ public sealed class TaskApplicationServiceTests
             .Returns(Task.CompletedTask);
 
         var sut = CreateSut();
-        var result = await sut.CreateAsync(userId, new CreateTaskRequest("Title", "Desc", TaskStatus.InProgress, null)).ConfigureAwait(false);
+        var result = await sut.CreateAsync(userId, new CreateTaskRequest("Title", "Desc", WorkTaskStatus.InProgress, null)).ConfigureAwait(false);
 
         var success = Assert.IsType<ServiceResult<TaskDto>.Success>(result);
         Assert.Equal("Title", success.Value.Title);
-        Assert.Equal(TaskStatus.InProgress, success.Value.Status);
+        Assert.Equal(WorkTaskStatus.InProgress, success.Value.Status);
         Assert.NotNull(inserted);
         Assert.Equal(userId, inserted!.UserId);
     }
@@ -52,7 +52,7 @@ public sealed class TaskApplicationServiceTests
             UserId = Guid.NewGuid(),
             Title = "T",
             Description = "D",
-            Status = TaskStatus.Pending,
+            Status = WorkTaskStatus.Pending,
             DueDateUtc = DateTime.UtcNow,
             CreatedAtUtc = DateTime.UtcNow,
             UpdatedAtUtc = DateTime.UtcNow,
