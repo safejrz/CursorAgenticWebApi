@@ -37,8 +37,16 @@ npm ci
 npm run dev
 ```
 
-Optional: set API base URLs if not using defaults (PowerShell):
+Optional: set API base URLs if not using defaults.
 
+**macOS / Linux (bash/zsh):**
+```bash
+VITE_IDENTITY_API_URL=http://localhost:5001 \
+VITE_TASKS_API_URL=http://localhost:5002 \
+npm run dev
+```
+
+**Windows (PowerShell):**
 ```powershell
 $env:VITE_IDENTITY_API_URL = "http://localhost:5001"
 $env:VITE_TASKS_API_URL = "http://localhost:5002"
