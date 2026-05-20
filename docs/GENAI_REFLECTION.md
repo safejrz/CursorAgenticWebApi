@@ -4,7 +4,7 @@ This document satisfies the “Generative AI tools” portion of [Requirements.m
 
 ## 1. Prompt used (example)
 
-> You are helping me build a **.NET 8** solution for a small **task management** API and SPA. Constraints:
+> You are helping me build a **.NET 8 / net10.0** solution for a small **task management** API and SPA. Constraints:
 >
 > - **Clean Architecture**: `Domain`, `Application`, `Infrastructure`, and two hosts: `Identity.Api` (register, login, JWT issue, profile) and `Tasks.Api` (CRUD for tasks scoped to the authenticated user).
 > - **Storage**: SQLite with **ADO.NET / Microsoft.Data.Sqlite** only — **no Entity Framework, Dapper, or MediatR**.

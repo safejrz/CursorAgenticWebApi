@@ -6,7 +6,7 @@ Use this for **Saturday–Sunday** rehearsal and as a backup if the live demo mi
 
 1. Close all old API and Vite terminals (avoid port conflicts).
 2. Optional **clean database:** delete `data/app.db` if you want a fresh seed (both APIs must be stopped).
-3. Start **Identity.Api** (`dotnet run` in `src/Identity.Api`) — wait for “Now listening on …:5001”.
+3. Start **Identity.Api** (`dotnet run` in `src/Identity.Api`) — wait for “Now listening on …:5001”. If `dotnet` is not on your PATH, use the full SDK path (e.g. the one installed by the VS Code .NET extension).
 4. Start **Tasks.Api** (`dotnet run` in `src/Tasks.Api`) — wait for “…:5002”.
 5. Start **frontend** (`npm run dev` in `frontend`) — open the URL Vite prints (default `http://localhost:5173`).
 6. If APIs are **not** in Development but you need the demo user, set `Demo:SeedIfEmpty` to `true` in both `appsettings.json` files **or** pass `--environment Development` when running the APIs.

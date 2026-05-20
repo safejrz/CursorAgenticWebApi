@@ -1,15 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "PowerShell(Read-Host -Prompt \"\")",
-      "Bash(xargs ls -l)",
-      "Bash(xargs ls -1)",
-      "Read(//home/jav/.vscode/**)",
-      "Read(//home/jav/.config/**)",
       "Bash(/home/jav/.config/Code/User/globalStorage/ms-dotnettools.vscode-dotnet-runtime/.dotnet/dotnet --version)",
       "Bash(/home/jav/.config/Code/User/globalStorage/ms-dotnettools.vscode-dotnet-runtime/.dotnet/dotnet --list-sdks)",
       "Bash(/home/jav/.config/Code/User/globalStorage/ms-dotnettools.vscode-dotnet-runtime/.dotnet/dotnet --list-runtimes)"
-    ],
-    "defaultMode": "bypassPermissions"
+    ]
   }
 }

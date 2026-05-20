@@ -1,0 +1,93 @@
+### Variables
+@identityUrl = http://localhost:5001
+@tasksUrl = http://localhost:5002
+
+# After running "Login - demo user", copy the token here:
+@token = PASTE_TOKEN_HERE
+
+# After running "Create task", copy the id here:
+@taskId = PASTE_TASK_ID_HERE
+
+
+### ── Health ────────────────────────────────────────────────────────────────
+
+### Identity API health
+GET {{identityUrl}}/api/health
+
+###
+
+### Tasks API health
+GET {{tasksUrl}}/api/health
+
+
+### ── Auth ──────────────────────────────────────────────────────────────────
+
+### Register a new user
+POST {{identityUrl}}/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "TestPass1!",
+  "displayName": "Test User"
+}
+
+###
+
+### Login - demo user  (copy the token from the response into @token above)
+POST {{identityUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "demo@example.com",
+  "password": "DemoPass1!"
+}
+
+###
+
+### Get current user profile  (requires token)
+GET {{identityUrl}}/api/auth/me
+Authorization: Bearer {{token}}
+
+
+### ── Tasks ─────────────────────────────────────────────────────────────────
+
+### List all tasks  (requires token)
+GET {{tasksUrl}}/api/tasks
+Authorization: Bearer {{token}}
+
+###
+
+### Create a task  (copy the id from the response into @taskId above)
+POST {{tasksUrl}}/api/tasks
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "My smoke test task",
+  "description": "Created from api-test.http"
+}
+
+###
+
+### Update a task
+PUT {{tasksUrl}}/api/tasks/{{taskId}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "Updated task title",
+  "description": "Updated from api-test.http",
+  "isCompleted": true
+}
+
+###
+
+### Delete a task
+DELETE {{tasksUrl}}/api/tasks/{{taskId}}
+Authorization: Bearer {{token}}
+
+###
+
+### Tasks require auth - expect 401
+GET {{tasksUrl}}/api/tasks
